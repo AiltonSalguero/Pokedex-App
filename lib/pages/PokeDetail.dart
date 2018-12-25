@@ -1,34 +1,68 @@
 import 'package:flutter/material.dart';
-import 'package:careers/model/careers.dart';
+import 'package:careers/model/pokemons.dart';
 
 class PokeDetail extends StatelessWidget {
   final Pokemon pokemon;
 
   PokeDetail({this.pokemon});
 
-  bodyWidget() => Stack(
+  bodyWidget(BuildContext context) => Stack(
         children: <Widget>[
-          Container(
+          Positioned(
+            //WIDGET PARA POSICIONAR EL WIDGET CARD
+            height: MediaQuery.of(context).size.height / 1.5,
+            width: MediaQuery.of(context).size.width - 20,
+            left: 10.0,
+            top: MediaQuery.of(context).size.height * 0.1,
+
             child: Card(
+              //BORDE CIRCULAR
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0)),
+
               child: Column(
+                //DONDE IRA LA INFO
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Text(pokemon.name),
+                  //Datos del pokemon
+                  SizedBox(
+                    height: 70.0,
+                  ),
+
+                  Text(
+                    pokemon.name,
+                    style:
+                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                  ),
                   Text("Height ${pokemon.height}"),
                   Text("Height ${pokemon.weight}"),
-                  Text("Types"),
+                  Text(
+                    "Types",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: pokemon.type
-                        .map((t) =>
-                            FilterChip(label: Text(t), onSelected: (b) {}))
+                        .map((t) => FilterChip(
+                            backgroundColor: Colors.amber,
+                            label: Text(t),
+                            onSelected: (b) {}))
                         .toList(),
                   ),
-                  Text("Weakness"),
+                  Text(
+                    "Weakness",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: pokemon.weaknesses
-                        .map((t) =>
-                            FilterChip(label: Text(t), onSelected: (b) {}))
+                        .map((t) => FilterChip(
+                            backgroundColor: Colors.red,
+                            label: Text(
+                              t,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onSelected: (b) {}))
                         .toList(),
                   ),
                   Text(
@@ -37,7 +71,7 @@ class PokeDetail extends StatelessWidget {
                   ),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: pokemon.nextEvolution
+                      children: pokemon.nextEvolution //Verifica que tenga evolucion
                               ?.map((n) => FilterChip(
                                   backgroundColor: Colors.green,
                                   label: Text(
@@ -50,7 +84,19 @@ class PokeDetail extends StatelessWidget {
                 ],
               ),
             ),
-          )
+          ),
+          Align(
+              alignment: Alignment.topCenter,
+              child: Hero(
+                tag: pokemon.img,
+                child: Container(
+                  height: 200.0,
+                  width: 200.0,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.cover, image: NetworkImage(pokemon.img))),
+                ),
+              ))
         ],
       );
 
@@ -66,8 +112,8 @@ class PokeDetail extends StatelessWidget {
         title: Text(pokemon.name),
       ),
 
-      //Contenido del Scaffold
-      body: bodyWidget(),
+      //Contenido del Scaffold, detalles del pokemon
+      body: bodyWidget(context),
     );
   }
 }

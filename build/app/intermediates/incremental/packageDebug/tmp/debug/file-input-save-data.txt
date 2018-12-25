@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Dec 24 21:06:57 PET 2018
+#Mon Dec 24 22:18:04 PET 2018
 4.path=flutter_assets/FontManifest.json
 8.set=ASSET
 6.path=lib/x86/libflutter.so

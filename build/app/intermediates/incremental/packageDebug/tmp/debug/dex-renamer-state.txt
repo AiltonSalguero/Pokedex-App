@@ -1,4 +1,4 @@
-#Mon Dec 24 21:06:55 PET 2018
+#Tue Dec 25 14:29:37 PET 2018
 base.0=/home/ailton/GitClones/EngineeringCareers-App/build/app/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

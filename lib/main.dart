@@ -3,10 +3,10 @@ import 'package:careers/pages/PokeDetail.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:careers/model/careers.dart';
+import 'package:careers/model/pokemons.dart';
 
 void main() => runApp(MaterialApp(
-      title: "Careers App",
+      title: "Pokedex App",
       home: HomePage(),
       debugShowCheckedModeBanner: false,
     ));
