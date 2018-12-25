@@ -6,6 +6,9 @@ import 'package:http/http.dart' as http;
 import 'package:careers/model/pokemons.dart';
 
 void main() => runApp(MaterialApp(
+  //---------------------------------------
+  //      CONFIGURACION DE LA APP
+  //---------------------------------------
       title: "Pokedex App",
       home: HomePage(),
       debugShowCheckedModeBanner: false,
@@ -32,26 +35,35 @@ class HomePageState extends State<HomePage> {
   }
 
   fetchData() async {
-    //Obtiene todos los datos de la API
+    //---------------------------------------
+    //  Obtiene todos los datos de la API
+    //---------------------------------------
     var res = await http.get(url);
     var decodedJson = jsonDecode(res.body);
 
     pokeHub = PokeHub.fromJson(decodedJson);
 
     setState(
-        () {}); //Funcion para que se actualicen los datos al iniciar la app
+      //---------------------------------------
+      //  Actualiza los datos al iniciar la app
+      //---------------------------------------
+        () {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //BARRA DE MENU
+      //---------------------------------------
+      //         BARRA DE MENU
+      //---------------------------------------
       appBar: AppBar(
         title: Text("Careers Info"),
         backgroundColor: Colors.cyan,
       ),
 
-      //CUERPO DEL SCAFFOLD
+      //---------------------------------------
+      //          CUERPO DEL SCAFFOLD
+      //---------------------------------------
       body: pokeHub == null
           ? Center(
               child: CircularProgressIndicator(),
@@ -107,10 +119,15 @@ class HomePageState extends State<HomePage> {
                   .toList(),
             ),
 
+      //---------------------------------------
       //MENU DESPLEGABLE
+      //---------------------------------------
       drawer: Drawer(),
 
+
+      //---------------------------------------
       // BOTON FLOTANTE
+      //---------------------------------------
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: Colors.cyan,
