@@ -57,7 +57,7 @@ class HomePageState extends State<HomePage> {
       //         BARRA DE MENU
       //---------------------------------------
       appBar: AppBar(
-        title: Text("Careers Info"),
+        title: Text("Pokedex"),
         backgroundColor: Colors.cyan,
       ),
 
